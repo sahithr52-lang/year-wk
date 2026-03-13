@@ -1,881 +1,770 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>12-Month Bodyweight Transformation | Feb 2026 - Dec 2026</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SHRED TO DEC 31</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #080808;
+    --surface: #0f0f0f;
+    --border: #1c1c1c;
+    --text: #ece8e1;
+    --muted: #4a4a4a;
+    --accent: #e8ff00;
+    --accent2: #ff4d00;
+    --easy: #00e5a0;
+    --med: #ffb800;
+    --hard: #ff4d00;
+    --beast: #cc00ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Barlow', sans-serif; min-height: 100vh; overflow-x: hidden; }
+  h1,h2,h3,.label { font-family: 'Bebas Neue', sans-serif; }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-            color: #333;
-        }
+  /* COUNTDOWN HERO */
+  .hero {
+    position: relative;
+    padding: 40px 24px 32px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(232,255,0,0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 720px; margin: 0 auto; }
+  .goal-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(232,255,0,0.08);
+    border: 1px solid rgba(232,255,0,0.2);
+    color: var(--accent);
+    font-size: 11px; letter-spacing: 3px;
+    padding: 5px 14px; margin-bottom: 20px;
+    font-family: 'Bebas Neue', sans-serif;
+  }
+  .goal-tag span { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+  .hero h1 { font-size: clamp(44px, 9vw, 88px); line-height: 0.88; letter-spacing: 1px; margin-bottom: 18px; }
+  .hero h1 em { color: var(--accent); font-style: normal; }
+  .hero p { font-size: 14px; color: var(--muted); line-height: 1.7; max-width: 400px; margin-bottom: 28px; font-weight: 300; }
 
-        .header {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            margin-bottom: 30px;
-            text-align: center;
-        }
+  .countdown-strip {
+    display: flex; gap: 4px; margin-bottom: 28px; flex-wrap: wrap;
+  }
+  .cd-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 14px 18px;
+    text-align: center;
+    min-width: 72px;
+  }
+  .cd-num { font-size: 36px; color: var(--accent); line-height: 1; }
+  .cd-label { font-size: 9px; letter-spacing: 2px; color: var(--muted); margin-top: 4px; font-family: 'Bebas Neue', sans-serif; }
 
-        .header h1 {
-            color: #667eea;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
+  /* DIFFICULTY SELECTOR */
+  .diff-section {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 24px;
+  }
+  .diff-inner { max-width: 720px; margin: 0 auto; }
+  .diff-label { font-size: 11px; letter-spacing: 3px; color: var(--muted); margin-bottom: 12px; }
+  .diff-grid { display: flex; gap: 8px; flex-wrap: wrap; }
+  .diff-btn {
+    padding: 10px 20px; cursor: pointer; border: 1px solid var(--border);
+    background: none; color: var(--muted);
+    font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 1px;
+    transition: all 0.2s; position: relative; overflow: hidden;
+  }
+  .diff-btn:hover { transform: translateY(-1px); }
+  .diff-btn.active-easy  { background: rgba(0,229,160,0.1);  border-color: var(--easy);  color: var(--easy); }
+  .diff-btn.active-medium{ background: rgba(255,184,0,0.1);  border-color: var(--med);   color: var(--med); }
+  .diff-btn.active-hard  { background: rgba(255,77,0,0.1);   border-color: var(--hard);  color: var(--hard); }
+  .diff-btn.active-beast { background: rgba(204,0,255,0.1);  border-color: var(--beast); color: var(--beast); }
+  .diff-desc { font-size: 12px; color: var(--muted); margin-top: 10px; font-weight: 300; line-height: 1.6; }
 
-        .header .date-range {
-            font-size: 1.2em;
-            color: #666;
-            margin-bottom: 20px;
-        }
+  /* TABS */
+  .tabs-bar {
+    border-bottom: 1px solid var(--border);
+    background: #0a0a0a;
+    position: sticky; top: 0; z-index: 10;
+  }
+  .tabs-inner { max-width: 720px; margin: 0 auto; display: flex; overflow-x: auto; }
+  .tab-btn {
+    padding: 15px 20px; cursor: pointer; border: none; background: none;
+    font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 2px;
+    color: var(--muted); border-bottom: 2px solid transparent;
+    white-space: nowrap; transition: color 0.2s;
+  }
+  .tab-btn.on { color: var(--accent); border-bottom-color: var(--accent); }
 
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
+  /* MAIN CONTENT */
+  .main { max-width: 720px; margin: 0 auto; padding: 0 24px 80px; }
+  .tab-content { display: none; padding-top: 28px; }
+  .tab-content.on { display: block; }
 
-        .stat-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
+  /* PHASE TIMELINE */
+  .phase-timeline { display: flex; gap: 0; margin-bottom: 32px; overflow-x: auto; }
+  .phase-chip {
+    flex: 1; min-width: 90px; padding: 12px 10px; text-align: center;
+    border: 1px solid var(--border); border-right: none;
+    background: var(--surface); cursor: pointer; transition: all 0.2s;
+    position: relative;
+  }
+  .phase-chip:last-child { border-right: 1px solid var(--border); }
+  .phase-chip.active { background: rgba(232,255,0,0.07); border-color: var(--accent); z-index: 1; }
+  .phase-chip .ph-num { font-size: 20px; color: var(--accent); }
+  .phase-chip .ph-name { font-size: 10px; letter-spacing: 2px; color: var(--muted); margin-top: 3px; }
+  .phase-chip .ph-weeks { font-size: 10px; color: #333; margin-top: 2px; font-weight: 300; }
+  .phase-chip.active .ph-name { color: var(--accent); }
 
-        .stat-card h3 {
-            font-size: 2em;
-            margin-bottom: 5px;
-        }
+  /* DAY SELECTOR */
+  .day-row { display: flex; gap: 6px; margin-bottom: 24px; flex-wrap: wrap; }
+  .day-btn {
+    padding: 9px 13px; cursor: pointer; border: 1px solid var(--border);
+    background: var(--surface); font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px; color: var(--muted); transition: all 0.15s;
+  }
+  .day-btn:hover { transform: translateY(-2px); }
+  .day-btn.on { background: var(--accent); color: #080808; border-color: var(--accent); }
+  .day-btn .dfocus { font-size: 8px; font-family: 'Barlow', sans-serif; margin-top: 2px; opacity: 0.6; }
 
-        .stat-card p {
-            font-size: 0.9em;
-            opacity: 0.9;
-        }
+  /* EXERCISE CARD */
+  .day-header {
+    padding: 18px 20px; background: var(--surface);
+    border: 1px solid var(--border); border-bottom: none;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .day-header h3 { font-size: 26px; letter-spacing: 0.5px; }
+  .day-header .meta { font-size: 11px; color: var(--muted); margin-top: 4px; font-weight: 300; }
+  .ex-table { background: var(--surface); border: 1px solid var(--border); }
+  .ex-row {
+    display: grid; grid-template-columns: 1fr 60px 80px;
+    padding: 15px 20px; border-bottom: 1px solid #141414;
+    align-items: start; transition: background 0.15s;
+    position: relative;
+  }
+  .ex-row:last-child { border-bottom: none; }
+  .ex-row:hover { background: rgba(232,255,0,0.03); }
+  .ex-row.extra-row { border-left: 2px solid var(--accent); }
+  .ex-name { font-size: 14px; font-weight: 500; color: var(--text); }
+  .ex-tip { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
+  .ex-diff-tag { font-size: 9px; letter-spacing: 1px; margin-top: 5px; font-family: 'Bebas Neue'; }
+  .ex-sets { text-align: center; }
+  .ex-sets .big { font-size: 22px; color: var(--accent); font-family: 'Bebas Neue'; line-height: 1; }
+  .ex-sets .tiny { font-size: 9px; color: var(--muted); letter-spacing: 1px; font-family: 'Bebas Neue'; margin-top: 2px; }
+  .ex-reps { text-align: center; }
+  .ex-reps .big { font-size: 14px; font-weight: 600; }
+  .ex-reps .tiny { font-size: 9px; color: var(--muted); letter-spacing: 1px; font-family: 'Bebas Neue'; margin-top: 2px; }
+  .del-btn { position: absolute; right: 12px; top: 12px; background: none; border: none; color: #333; cursor: pointer; font-size: 14px; transition: color 0.2s; display: none; }
+  .ex-row.extra-row:hover .del-btn { display: block; }
+  .del-btn:hover { color: var(--hard); }
 
-        .phase-selector {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
+  /* REST BAR */
+  .rest-bar {
+    margin-top: 12px; padding: 12px 16px;
+    background: rgba(232,255,0,0.04); border: 1px solid rgba(232,255,0,0.1);
+    font-size: 12px; color: var(--muted); display: flex; gap: 8px; align-items: center;
+  }
+  .rest-bar span { color: var(--accent); }
 
-        .phase-btn {
-            background: white;
-            border: 3px solid #667eea;
-            color: #667eea;
-            padding: 12px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1em;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
+  /* ADD EXERCISE PANEL */
+  .add-section { margin-top: 20px; }
+  .add-toggle {
+    width: 100%; padding: 14px; background: none;
+    border: 1px dashed #2a2a2a; color: #444;
+    font-family: 'Bebas Neue'; font-size: 15px; letter-spacing: 2px;
+    cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .add-toggle:hover { border-color: var(--accent); color: var(--accent); background: rgba(232,255,0,0.03); }
+  .add-panel {
+    display: none; background: var(--surface); border: 1px solid var(--border);
+    border-top: none; padding: 20px;
+  }
+  .add-panel.open { display: block; }
+  .add-panel h4 { font-size: 18px; letter-spacing: 1px; margin-bottom: 16px; color: var(--accent); }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+  .form-grid.full { grid-template-columns: 1fr; }
+  .fi label { font-size: 10px; letter-spacing: 2px; color: var(--muted); display: block; margin-bottom: 5px; font-family: 'Bebas Neue'; }
+  .fi input, .fi select, .fi textarea {
+    width: 100%; background: #141414; border: 1px solid #222;
+    color: var(--text); padding: 10px 12px; font-family: 'Barlow'; font-size: 13px;
+    outline: none; transition: border-color 0.2s;
+  }
+  .fi input:focus, .fi select:focus, .fi textarea:focus { border-color: var(--accent); }
+  .fi textarea { resize: vertical; min-height: 60px; }
+  .fi select option { background: #141414; }
+  .add-submit {
+    width: 100%; padding: 13px; background: var(--accent); color: #080808;
+    border: none; font-family: 'Bebas Neue'; font-size: 16px; letter-spacing: 2px;
+    cursor: pointer; margin-top: 12px; transition: opacity 0.2s;
+  }
+  .add-submit:hover { opacity: 0.85; }
 
-        .phase-btn:hover {
-            background: #667eea;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
+  /* PROGRESS / PHASES TAB */
+  .phase-card {
+    background: var(--surface); border: 1px solid var(--border);
+    margin-bottom: 12px; overflow: hidden;
+  }
+  .phase-card-header {
+    padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer;
+    transition: background 0.15s;
+  }
+  .phase-card-header:hover { background: rgba(232,255,0,0.03); }
+  .phase-card-body { padding: 0 20px 20px; display: none; }
+  .phase-card-body.open { display: block; }
+  .phase-badge {
+    font-size: 10px; letter-spacing: 2px; padding: 3px 10px;
+    font-family: 'Bebas Neue'; border: 1px solid;
+  }
+  .phase-badge.current { border-color: var(--accent); color: var(--accent); background: rgba(232,255,0,0.08); }
+  .phase-badge.done { border-color: #333; color: #444; }
+  .phase-badge.upcoming { border-color: #222; color: #333; }
+  .progress-bar-wrap { margin: 12px 0; }
+  .progress-bar-bg { background: #141414; height: 4px; border-radius: 2px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--accent); transition: width 0.5s; }
+  .prog-label { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
 
-        .phase-btn.active {
-            background: #667eea;
-            color: white;
-        }
+  /* NUTRITION */
+  .nut-rule { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .nut-icon { font-size: 24px; min-width: 36px; }
+  .nut-rule-title { font-size: 18px; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .nut-rule-detail { font-size: 13px; color: var(--muted); font-weight: 300; line-height: 1.6; }
 
-        .content-section {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            margin-bottom: 20px;
-        }
+  /* COUNTDOWN pills */
+  .phase-progress-strip { display: flex; gap: 3px; margin-top: 16px; flex-wrap: wrap; }
+  .week-pip { width: 18px; height: 18px; background: #141414; border: 1px solid #1c1c1c; border-radius: 2px; cursor: default; }
+  .week-pip.done { background: var(--accent); border-color: var(--accent); }
+  .week-pip.current { background: rgba(232,255,0,0.3); border-color: var(--accent); animation: pulse 1.5s infinite; }
 
-        .content-section h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 2em;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 10px;
-        }
+  /* extras badge */
+  .extras-badge {
+    display: inline-block; background: var(--accent); color: #080808;
+    font-size: 10px; padding: 1px 6px; font-family: 'Bebas Neue';
+    letter-spacing: 1px; margin-left: 6px; vertical-align: middle;
+  }
 
-        .week-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .day-card {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 5px solid #667eea;
-        }
-
-        .day-card h3 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-
-        .exercise-list {
-            list-style: none;
-        }
-
-        .exercise-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .exercise-list li:last-child {
-            border-bottom: none;
-        }
-
-        .exercise-name {
-            font-weight: 600;
-            color: #333;
-        }
-
-        .exercise-reps {
-            background: #667eea;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.85em;
-        }
-
-        .progress-section {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            margin-bottom: 20px;
-        }
-
-        .progress-bar-container {
-            background: #e0e0e0;
-            border-radius: 25px;
-            height: 30px;
-            overflow: hidden;
-            margin: 20px 0;
-        }
-
-        .progress-bar {
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            height: 100%;
-            border-radius: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            transition: width 0.5s ease;
-        }
-
-        .tips-section {
-            background: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-
-        .tips-section h3 {
-            color: #856404;
-            margin-bottom: 10px;
-        }
-
-        .tips-section ul {
-            margin-left: 20px;
-        }
-
-        .tips-section li {
-            margin: 8px 0;
-            color: #856404;
-        }
-
-        .calendar-view {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .calendar-day {
-            background: white;
-            border: 2px solid #e0e0e0;
-            padding: 15px 10px;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .calendar-day:hover {
-            border-color: #667eea;
-            transform: scale(1.05);
-        }
-
-        .calendar-day.completed {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-color: #667eea;
-        }
-
-        .calendar-day.today {
-            border: 3px solid #ffc107;
-            font-weight: bold;
-        }
-
-        .calendar-day .day-number {
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-
-        .calendar-day .day-name {
-            font-size: 0.8em;
-            margin-top: 5px;
-            opacity: 0.7;
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.8em;
-            }
-            
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .week-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .calendar-view {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .nutrition-card {
-            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-
-        .nutrition-card h3 {
-            color: #006400;
-            margin-bottom: 15px;
-        }
-
-        .nutrition-card p {
-            color: #004d00;
-            margin: 8px 0;
-            font-weight: 500;
-        }
-    </style>
+  @media (max-width: 480px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .ex-row { grid-template-columns: 1fr 50px 70px; }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🏋️ 12-Month Transformation Journey</h1>
-            <div class="date-range">February 13, 2026 → December 31, 2026</div>
-            <div class="stats">
-                <div class="stat-card">
-                    <h3 id="daysRemaining">322</h3>
-                    <p>Days Remaining</p>
-                </div>
-                <div class="stat-card">
-                    <h3 id="weeksPassed">0</h3>
-                    <p>Weeks Completed</p>
-                </div>
-                <div class="stat-card">
-                    <h3 id="currentPhase">Foundation</h3>
-                    <p>Current Phase</p>
-                </div>
-                <div class="stat-card">
-                    <h3 id="progressPercent">0%</h3>
-                    <p>Journey Complete</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="progress-section">
-            <h2>Your Progress</h2>
-            <div class="progress-bar-container">
-                <div class="progress-bar" id="mainProgressBar" style="width: 0%;">0%</div>
-            </div>
-            <p style="text-align: center; color: #666; margin-top: 10px;">
-                Started: February 13, 2026 | Current: <span id="currentDate"></span> | End: December 31, 2026
-            </p>
-        </div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="goal-tag"><span></span> MISSION ACTIVE · 7 MONTHS</div>
+    <h1>SHRED BY<br/><em>DEC 31</em></h1>
+    <p>7 months. No equipment. No excuses. A full progressive plan from total beginner to a wide, shredded physique — ending exactly on December 31.</p>
+    <div class="countdown-strip" id="countdown"></div>
+    <div style="font-size:11px;color:var(--muted);letter-spacing:2px;font-family:'Bebas Neue'">TARGET: DECEMBER 31, 2026</div>
+  </div>
+</div>
 
-        <div class="phase-selector">
-            <button class="phase-btn active" onclick="showPhase(1)">Foundation (Months 1-3)</button>
-            <button class="phase-btn" onclick="showPhase(2)">Strength (Months 4-6)</button>
-            <button class="phase-btn" onclick="showPhase(3)">Hypertrophy (Months 7-9)</button>
-            <button class="phase-btn" onclick="showPhase(4)">Advanced (Months 10-12)</button>
-        </div>
-
-        <!-- Phase 1: Foundation (Months 1-3) -->
-        <div class="content-section phase-content" id="phase1">
-            <h2>Phase 1: Foundation Building (Feb 13 - May 12, 2026)</h2>
-            <p style="margin-bottom: 20px; font-size: 1.1em; color: #666;">
-                <strong>Goal:</strong> Build solid foundation, perfect form, establish workout habit
-            </p>
-
-            <div class="week-grid">
-                <div class="day-card">
-                    <h3>💪 Monday - Push Focus</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Push-ups</span> <span class="exercise-reps">4×15-18</span></li>
-                        <li><span class="exercise-name">Diamond push-ups</span> <span class="exercise-reps">3×10-12</span></li>
-                        <li><span class="exercise-name">Pike push-ups</span> <span class="exercise-reps">3×12-15</span></li>
-                        <li><span class="exercise-name">Tricep dips</span> <span class="exercise-reps">3×15-20</span></li>
-                        <li><span class="exercise-name">Decline push-ups</span> <span class="exercise-reps">3×12-15</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>🎯 Tuesday - Pull & Core</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Inverted rows</span> <span class="exercise-reps">4×12-15</span></li>
-                        <li><span class="exercise-name">Superman holds</span> <span class="exercise-reps">4×20-30s</span></li>
-                        <li><span class="exercise-name">Plank</span> <span class="exercise-reps">3×45-60s</span></li>
-                        <li><span class="exercise-name">Bicycle crunches</span> <span class="exercise-reps">3×20</span></li>
-                        <li><span class="exercise-name">Hollow body hold</span> <span class="exercise-reps">3×30-45s</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>🦵 Wednesday - Legs & Glutes</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Squats</span> <span class="exercise-reps">4×20-25</span></li>
-                        <li><span class="exercise-name">Bulgarian split squats</span> <span class="exercise-reps">3×15 each</span></li>
-                        <li><span class="exercise-name">Walking lunges</span> <span class="exercise-reps">3×20</span></li>
-                        <li><span class="exercise-name">Single-leg glute bridges</span> <span class="exercise-reps">3×15 each</span></li>
-                        <li><span class="exercise-name">Jump squats</span> <span class="exercise-reps">3×15</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>💥 Thursday - Upper Volume</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Wide push-ups</span> <span class="exercise-reps">4×15-18</span></li>
-                        <li><span class="exercise-name">Archer push-ups</span> <span class="exercise-reps">3×8-10 each</span></li>
-                        <li><span class="exercise-name">Pseudo planche push-ups</span> <span class="exercise-reps">3×8-10</span></li>
-                        <li><span class="exercise-name">Pike push-ups</span> <span class="exercise-reps">3×15</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>🔥 Friday - Core & Conditioning</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Mountain climbers</span> <span class="exercise-reps">4×30</span></li>
-                        <li><span class="exercise-name">Russian twists</span> <span class="exercise-reps">4×30</span></li>
-                        <li><span class="exercise-name">Leg raises</span> <span class="exercise-reps">3×15-20</span></li>
-                        <li><span class="exercise-name">Plank to down dog</span> <span class="exercise-reps">3×15</span></li>
-                        <li><span class="exercise-name">Burpees</span> <span class="exercise-reps">3×12-15</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>⚡ Saturday - Full Body</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Push-ups</span> <span class="exercise-reps">3×18-20</span></li>
-                        <li><span class="exercise-name">Squats</span> <span class="exercise-reps">3×25</span></li>
-                        <li><span class="exercise-name">Pike push-ups</span> <span class="exercise-reps">3×12</span></li>
-                        <li><span class="exercise-name">Lunges</span> <span class="exercise-reps">3×20</span></li>
-                        <li><span class="exercise-name">Plank</span> <span class="exercise-reps">3×60s</span></li>
-                        <li><span class="exercise-name">Burpees</span> <span class="exercise-reps">3×10</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>🧘 Sunday - Recovery</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Stretching</span> <span class="exercise-reps">20-30 min</span></li>
-                        <li><span class="exercise-name">Yoga/Mobility</span> <span class="exercise-reps">Optional</span></li>
-                        <li><span class="exercise-name">Light walk</span> <span class="exercise-reps">Optional</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="tips-section">
-                <h3>💡 Phase 1 Tips</h3>
-                <ul>
-                    <li><strong>Progressive Overload:</strong> Add 1-2 reps per exercise each week</li>
-                    <li><strong>Form First:</strong> Perfect your technique before increasing difficulty</li>
-                    <li><strong>Nutrition:</strong> Eat at maintenance calories (body weight × 15)</li>
-                    <li><strong>Month 2:</strong> Increase to 20-22 push-ups, add 2-3 reps to all exercises</li>
-                    <li><strong>Month 3:</strong> Reach 22-25 push-ups, introduce tempo training (3s down, 1s up)</li>
-                </ul>
-            </div>
-
-            <div class="nutrition-card">
-                <h3>🥗 Nutrition for Months 1-3</h3>
-                <p><strong>Calories:</strong> Maintenance (Body Weight × 15)</p>
-                <p><strong>Protein:</strong> 0.8-1g per pound of body weight</p>
-                <p><strong>Focus:</strong> Establish healthy eating habits, track macros</p>
-            </div>
-        </div>
-
-        <!-- Phase 2: Strength (Months 4-6) -->
-        <div class="content-section phase-content hidden" id="phase2">
-            <h2>Phase 2: Strength Building (May 13 - August 11, 2026)</h2>
-            <p style="margin-bottom: 20px; font-size: 1.1em; color: #666;">
-                <strong>Goal:</strong> Build raw strength, introduce harder variations, master progressions
-            </p>
-
-            <div class="week-grid">
-                <div class="day-card">
-                    <h3>💪 Monday - Push Focus</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Decline push-ups</span> <span class="exercise-reps">4×15-18</span></li>
-                        <li><span class="exercise-name">Diamond push-ups</span> <span class="exercise-reps">4×12-15</span></li>
-                        <li><span class="exercise-name">Pike push-ups</span> <span class="exercise-reps">4×15-18</span></li>
-                        <li><span class="exercise-name">Tricep dips</span> <span class="exercise-reps">4×20-25</span></li>
-                        <li><span class="exercise-name">Archer push-ups</span> <span class="exercise-reps">3×10 each</span></li>
-                        <li><span class="exercise-name">Wall handstand holds</span> <span class="exercise-reps">3×20-30s</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>🎯 Tuesday - Pull & Core</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Inverted rows</span> <span class="exercise-reps">5×15-18</span></li>
-                        <li><span class="exercise-name">Pull-up negatives</span> <span class="exercise-reps">4×5-8</span></li>
-                        <li><span class="exercise-name">Superman pulls</span> <span class="exercise-reps">4×20</span></li>
-                        <li><span class="exercise-name">L-sit holds</span> <span class="exercise-reps">3×15-20s</span></li>
-                        <li><span class="exercise-name">Hanging knee raises</span> <span class="exercise-reps">3×12-15</span></li>
-                        <li><span class="exercise-name">Plank variations</span> <span class="exercise-reps">3×60s</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>🦵 Wednesday - Legs & Power</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Pistol squat progressions</span> <span class="exercise-reps">3×8-10 each</span></li>
-                        <li><span class="exercise-name">Bulgarian split squats</span> <span class="exercise-reps">4×18-20 each</span></li>
-                        <li><span class="exercise-name">Jump lunges</span> <span class="exercise-reps">3×15 each</span></li>
-                        <li><span class="exercise-name">Single-leg deadlifts</span> <span class="exercise-reps">4×12 each</span></li>
-                        <li><span class="exercise-name">Squat holds</span> <span class="exercise-reps">3×45s</span></li>
-                        <li><span class="exercise-name">Calf raises</span> <span class="exercise-reps">4×25-30</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>💥 Thursday - Upper Volume</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Wide push-ups</span> <span class="exercise-reps">5×18-20</span></li>
-                        <li><span class="exercise-name">Pseudo planche push-ups</span> <span class="exercise-reps">4×12-15</span></li>
-                        <li><span class="exercise-name">Explosive push-ups</span> <span class="exercise-reps">3×10-12</span></li>
-                        <li><span class="exercise-name">Handstand push-up progressions</span> <span class="exercise-reps">3×5-8</span></li>
-                        <li><span class="exercise-name">Diamond push-ups</span> <span class="exercise-reps">4×15</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>🔥 Friday - Core & Conditioning</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Dragon flag progressions</span> <span class="exercise-reps">3×8-10</span></li>
-                        <li><span class="exercise-name">Windshield wipers</span> <span class="exercise-reps">3×10 each</span></li>
-                        <li><span class="exercise-name">V-ups</span> <span class="exercise-reps">4×15-20</span></li>
-                        <li><span class="exercise-name">Mountain climbers</span> <span class="exercise-reps">4×40</span></li>
-                        <li><span class="exercise-name">Burpees</span> <span class="exercise-reps">4×15-18</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>⚡ Saturday - Full Body Circuit</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">4 Rounds Total:</span></li>
-                        <li><span class="exercise-name">Push-ups</span> <span class="exercise-reps">20</span></li>
-                        <li><span class="exercise-name">Squats</span> <span class="exercise-reps">30</span></li>
-                        <li><span class="exercise-name">Pull-up negatives</span> <span class="exercise-reps">5</span></li>
-                        <li><span class="exercise-name">Lunges</span> <span class="exercise-reps">20</span></li>
-                        <li><span class="exercise-name">Plank</span> <span class="exercise-reps">60s</span></li>
-                        <li><span class="exercise-name">Burpees</span> <span class="exercise-reps">15</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>🧘 Sunday - Recovery</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Deep stretching</span> <span class="exercise-reps">30 min</span></li>
-                        <li><span class="exercise-name">Foam rolling</span> <span class="exercise-reps">15 min</span></li>
-                        <li><span class="exercise-name">Active recovery walk</span> <span class="exercise-reps">Optional</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="tips-section">
-                <h3>💡 Phase 2 Tips</h3>
-                <ul>
-                    <li><strong>Progressive Overload:</strong> Add 2-3 reps weekly OR increase to harder variations</li>
-                    <li><strong>Weighted Work:</strong> Add a backpack with books/water bottles for extra resistance</li>
-                    <li><strong>Pull-ups:</strong> Focus on negatives (jump up, lower slowly) to build strength</li>
-                    <li><strong>Month 5-6:</strong> Continue increasing reps by 10-15%, master archer push-ups</li>
-                    <li><strong>Rest:</strong> 60-90 seconds between sets for optimal recovery</li>
-                </ul>
-            </div>
-
-            <div class="nutrition-card">
-                <h3>🥗 Nutrition for Months 4-6</h3>
-                <p><strong>Calories:</strong> Slight Surplus (+300-500 calories)</p>
-                <p><strong>Protein:</strong> 0.8-1g per pound of body weight</p>
-                <p><strong>Focus:</strong> Build muscle mass, fuel intense training</p>
-            </div>
-        </div>
-
-        <!-- Phase 3: Hypertrophy (Months 7-9) -->
-        <div class="content-section phase-content hidden" id="phase3">
-            <h2>Phase 3: Hypertrophy Phase (August 12 - November 10, 2026)</h2>
-            <p style="margin-bottom: 20px; font-size: 1.1em; color: #666;">
-                <strong>Goal:</strong> Maximum muscle growth, high volume training, time under tension
-            </p>
-
-            <div class="week-grid">
-                <div class="day-card">
-                    <h3>💪 Monday - Push Focus</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Decline push-ups (slow)</span> <span class="exercise-reps">5×15-20</span></li>
-                        <li><span class="exercise-name">Diamond push-ups</span> <span class="exercise-reps">5×15-18</span></li>
-                        <li><span class="exercise-name">Pike push-ups</span> <span class="exercise-reps">5×18-20</span></li>
-                        <li><span class="exercise-name">Weighted dips</span> <span class="exercise-reps">4×12-15</span></li>
-                        <li><span class="exercise-name">Archer push-ups</span> <span class="exercise-reps">4×12 each</span></li>
-                        <li><span class="exercise-name">Pseudo planche push-ups</span> <span class="exercise-reps">4×15</span></li>
-                        <li><span class="exercise-name">Handstand hold</span> <span class="exercise-reps">3×30-45s</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>🎯 Tuesday - Pull & Core</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Pull-ups/Chin-ups</span> <span class="exercise-reps">5×8-12</span></li>
-                        <li><span class="exercise-name">Inverted rows (elevated)</span> <span class="exercise-reps">5×18-20</span></li>
-                        <li><span class="exercise-name">Superman pulls</span> <span class="exercise-reps">5×25</span></li>
-                        <li><span class="exercise-name">Front lever progressions</span> <span class="exercise-reps">3×10-15s</span></li>
-                        <li><span class="exercise-name">Hanging leg raises</span> <span class="exercise-reps">4×15-20</span></li>
-                        <li><span class="exercise-name">Ab wheel rollouts</span> <span class="exercise-reps">4×12-15</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>🦵 Wednesday - Legs & Power</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Pistol squats</span> <span class="exercise-reps">4×10-12 each</span></li>
-                        <li><span class="exercise-name">Bulgarian split squats</span> <span class="exercise-reps">5×20-22 each</span></li>
-                        <li><span class="exercise-name">Jump squats</span> <span class="exercise-reps">4×20</span></li>
-                        <li><span class="exercise-name">Single-leg deadlifts</span> <span class="exercise-reps">5×15 each</span></li>
-                        <li><span class="exercise-name">Sissy squats</span> <span class="exercise-reps">3×12-15</span></li>
-                        <li><span class="exercise-name">Wall sits</span> <span class="exercise-reps">3×60-90s</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>💥 Thursday - Upper Volume</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Wide push-ups</span> <span class="exercise-reps">5×20-25</span></li>
-                        <li><span class="exercise-name">Explosive push-ups</span> <span class="exercise-reps">4×12-15</span></li>
-                        <li><span class="exercise-name">Handstand push-ups</span> <span class="exercise-reps">4×8-10</span></li>
-                        <li><span class="exercise-name">One-arm push-up progressions</span> <span class="exercise-reps">3×6-8 each</span></li>
-                        <li><span class="exercise-name">Planche lean holds</span> <span class="exercise-reps">3×20-30s</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>🔥 Friday - Core & Conditioning</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Dragon flags</span> <span class="exercise-reps">4×10-12</span></li>
-                        <li><span class="exercise-name">Windshield wipers</span> <span class="exercise-reps">4×12 each</span></li>
-                        <li><span class="exercise-name">Hanging leg circles</span> <span class="exercise-reps">3×10 each</span></li>
-                        <li><span class="exercise-name">Burpees</span> <span class="exercise-reps">5×20</span></li>
-                        <li><span class="exercise-name">Mountain climbers</span> <span class="exercise-reps">5×50</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>⚡ Saturday - Full Body HIIT</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">6 Rounds Total:</span></li>
-                        <li><span class="exercise-name">Push-ups</span> <span class="exercise-reps">25</span></li>
-                        <li><span class="exercise-name">Jump squats</span> <span class="exercise-reps">35</span></li>
-                        <li><span class="exercise-name">Pull-ups</span> <span class="exercise-reps">10</span></li>
-                        <li><span class="exercise-name">Burpees</span> <span class="exercise-reps">20</span></li>
-                        <li><span class="exercise-name">Plank</span> <span class="exercise-reps">90s</span></li>
-                        <li><span class="exercise-name">Rest 90s between rounds</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>🧘 Sunday - Recovery</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Yoga flow</span> <span class="exercise-reps">30-45 min</span></li>
-                        <li><span class="exercise-name">Mobility work</span> <span class="exercise-reps">20 min</span></li>
-                        <li><span class="exercise-name">Light cardio</span> <span class="exercise-reps">Optional</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="tips-section">
-                <h3>💡 Phase 3 Tips</h3>
-                <ul>
-                    <li><strong>Time Under Tension:</strong> Use 4-second negatives with 2-second pauses</li>
-                    <li><strong>Drop Sets:</strong> Go to failure, rest 15 seconds, continue for more reps</li>
-                    <li><strong>Volume:</strong> Increase total reps by 15-20% from previous phase</li>
-                    <li><strong>Nutrition:</strong> Continue calorie surplus to maximize muscle growth</li>
-                    <li><strong>Recovery:</strong> Sleep 7-9 hours, consider deload week every 4 weeks</li>
-                </ul>
-            </div>
-
-            <div class="nutrition-card">
-                <h3>🥗 Nutrition for Months 7-9</h3>
-                <p><strong>Calories:</strong> Continued Surplus (+300-500 calories)</p>
-                <p><strong>Protein:</strong> 1g per pound of body weight</p>
-                <p><strong>Focus:</strong> Peak muscle building phase, optimize recovery</p>
-            </div>
-        </div>
-
-        <!-- Phase 4: Advanced (Months 10-12) -->
-        <div class="content-section phase-content hidden" id="phase4">
-            <h2>Phase 4: Advanced Aesthetics & Skills (November 11 - December 31, 2026)</h2>
-            <p style="margin-bottom: 20px; font-size: 1.1em; color: #666;">
-                <strong>Goal:</strong> Master advanced skills, peak aesthetics, maximum definition
-            </p>
-
-            <div class="week-grid">
-                <div class="day-card">
-                    <h3>💪 Monday - Push Mastery</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">One-arm push-ups</span> <span class="exercise-reps">4×5-8 each</span></li>
-                        <li><span class="exercise-name">Handstand push-ups</span> <span class="exercise-reps">5×10-12</span></li>
-                        <li><span class="exercise-name">Planche push-ups</span> <span class="exercise-reps">3×6-8</span></li>
-                        <li><span class="exercise-name">Weighted decline push-ups</span> <span class="exercise-reps">5×18-20</span></li>
-                        <li><span class="exercise-name">Diamond push-ups</span> <span class="exercise-reps">5×20-25</span></li>
-                        <li><span class="exercise-name">Pseudo planche holds</span> <span class="exercise-reps">3×30-45s</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>🎯 Tuesday - Pull Excellence</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Pull-ups</span> <span class="exercise-reps">5×12-15</span></li>
-                        <li><span class="exercise-name">Muscle-up progressions</span> <span class="exercise-reps">4×5-8</span></li>
-                        <li><span class="exercise-name">Front lever holds</span> <span class="exercise-reps">3×15-20s</span></li>
-                        <li><span class="exercise-name">Typewriter pull-ups</span> <span class="exercise-reps">3×8-10</span></li>
-                        <li><span class="exercise-name">Hanging leg raises</span> <span class="exercise-reps">5×20</span></li>
-                        <li><span class="exercise-name">Dragon flags</span> <span class="exercise-reps">5×12-15</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>🦵 Wednesday - Leg Strength</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Pistol squats (weighted)</span> <span class="exercise-reps">5×12-15 each</span></li>
-                        <li><span class="exercise-name">Shrimp squats</span> <span class="exercise-reps">4×10-12 each</span></li>
-                        <li><span class="exercise-name">Jump lunges</span> <span class="exercise-reps">5×20 each</span></li>
-                        <li><span class="exercise-name">Single-leg box jumps</span> <span class="exercise-reps">3×10 each</span></li>
-                        <li><span class="exercise-name">Nordic curls</span> <span class="exercise-reps">4×8-10</span></li>
-                        <li><span class="exercise-name">Deep squat holds</span> <span class="exercise-reps">3×90s</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>💥 Thursday - Upper Intensity</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Decline one-arm push-ups</span> <span class="exercise-reps">3×5 each</span></li>
-                        <li><span class="exercise-name">Explosive clap push-ups</span> <span class="exercise-reps">4×15</span></li>
-                        <li><span class="exercise-name">Handstand push-ups</span> <span class="exercise-reps">5×12-15</span></li>
-                        <li><span class="exercise-name">Planche lean to push-up</span> <span class="exercise-reps">3×8-10</span></li>
-                        <li><span class="exercise-name">Superman push-ups</span> <span class="exercise-reps">3×10-12</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>🔥 Friday - Core & Skills</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Full dragon flags</span> <span class="exercise-reps">5×12-15</span></li>
-                        <li><span class="exercise-name">Front lever raises</span> <span class="exercise-reps">3×8-10</span></li>
-                        <li><span class="exercise-name">Human flag progressions</span> <span class="exercise-reps">3×10-15s each</span></li>
-                        <li><span class="exercise-name">L-sit to handstand</span> <span class="exercise-reps">3×5</span></li>
-                        <li><span class="exercise-name">Advanced planks</span> <span class="exercise-reps">3×90s</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>⚡ Saturday - Full Body Challenge</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Push-ups</span> <span class="exercise-reps">100 total</span></li>
-                        <li><span class="exercise-name">Squats</span> <span class="exercise-reps">150 total</span></li>
-                        <li><span class="exercise-name">Pull-ups</span> <span class="exercise-reps">50 total</span></li>
-                        <li><span class="exercise-name">Burpees</span> <span class="exercise-reps">100 total</span></li>
-                        <li><span class="exercise-name">Plank hold</span> <span class="exercise-reps">5 min total</span></li>
-                        <li><span class="exercise-name">Complete in minimal time</span></li>
-                    </ul>
-                </div>
-
-                <div class="day-card">
-                    <h3>🧘 Sunday - Recovery</h3>
-                    <ul class="exercise-list">
-                        <li><span class="exercise-name">Full body stretching</span> <span class="exercise-reps">45 min</span></li>
-                        <li><span class="exercise-name">Meditation</span> <span class="exercise-reps">10-15 min</span></li>
-                        <li><span class="exercise-name">Light activity</span> <span class="exercise-reps">Optional</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="tips-section">
-                <h3>💡 Phase 4 Tips</h3>
-                <ul>
-                    <li><strong>Skill Focus:</strong> Master muscle-ups, one-arm push-ups, front lever</li>
-                    <li><strong>Strength + Hypertrophy:</strong> Mix 3-5 rep max strength with 15-25 rep pump work</li>
-                    <li><strong>Supersets:</strong> Pair opposing muscle groups (push/pull) for efficiency</li>
-                    <li><strong>Cutting Phase:</strong> Start reducing calories to reveal muscle definition</li>
-                    <li><strong>Peak Week:</strong> Final week before Dec 31 - test all max reps and skills</li>
-                </ul>
-            </div>
-
-            <div class="nutrition-card">
-                <h3>🥗 Nutrition for Months 10-12</h3>
-                <p><strong>Calories:</strong> Cut Phase (-300-500 calories)</p>
-                <p><strong>Protein:</strong> 1g per pound (maintain muscle while cutting fat)</p>
-                <p><strong>Focus:</strong> Reveal muscle definition, maintain strength, peak aesthetics</p>
-            </div>
-        </div>
-
-        <div class="content-section">
-            <h2>📊 Expected Results by December 31, 2026</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
-                <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 20px; border-radius: 10px; color: white;">
-                    <h3 style="margin-bottom: 10px;">💪 Push-ups</h3>
-                    <p style="font-size: 2em; font-weight: bold;">40-50+</p>
-                    <p>Consecutive reps</p>
-                </div>
-                <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 20px; border-radius: 10px; color: white;">
-                    <h3 style="margin-bottom: 10px;">🎯 Pull-ups</h3>
-                    <p style="font-size: 2em; font-weight: bold;">15-20+</p>
-                    <p>Consecutive reps</p>
-                </div>
-                <div style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); padding: 20px; border-radius: 10px; color: white;">
-                    <h3 style="margin-bottom: 10px;">🦵 Pistol Squats</h3>
-                    <p style="font-size: 2em; font-weight: bold;">15+</p>
-                    <p>Each leg</p>
-                </div>
-                <div style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); padding: 20px; border-radius: 10px; color: white;">
-                    <h3 style="margin-bottom: 10px;">🤸 Handstand Push-ups</h3>
-                    <p style="font-size: 2em; font-weight: bold;">10-15</p>
-                    <p>Reps</p>
-                </div>
-            </div>
-            <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
-                <h3 style="color: #667eea; margin-bottom: 15px;">🏆 Physical Transformation</h3>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="padding: 10px; border-bottom: 1px solid #ddd;">✓ Visible six-pack abs</li>
-                    <li style="padding: 10px; border-bottom: 1px solid #ddd;">✓ Defined chest and shoulders</li>
-                    <li style="padding: 10px; border-bottom: 1px solid #ddd;">✓ V-taper physique</li>
-                    <li style="padding: 10px; border-bottom: 1px solid #ddd;">✓ Developed arms and forearms</li>
-                    <li style="padding: 10px; border-bottom: 1px solid #ddd;">✓ Strong, athletic legs</li>
-                    <li style="padding: 10px;">✓ Master advanced calisthenics skills</li>
-                </ul>
-            </div>
-        </div>
+<!-- DIFFICULTY -->
+<div class="diff-section">
+  <div class="diff-inner">
+    <div class="diff-label">SELECT DIFFICULTY</div>
+    <div class="diff-grid">
+      <button class="diff-btn active-easy" onclick="setDiff('easy',this)">🟢 EASY</button>
+      <button class="diff-btn" onclick="setDiff('medium',this)">🟡 MEDIUM</button>
+      <button class="diff-btn" onclick="setDiff('hard',this)">🔴 HARD</button>
+      <button class="diff-btn" onclick="setDiff('beast',this)">👾 BEAST</button>
     </div>
+    <div class="diff-desc" id="diff-desc">Fewer sets, longer rest, slower pace. Perfect if you're just starting out and need to build the habit first.</div>
+  </div>
+</div>
 
-    <script>
-        // Calculate days and progress
-        const startDate = new Date('2026-02-13');
-        const endDate = new Date('2026-12-31');
-        const today = new Date();
-        
-        const totalDays = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
-        const daysPassed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-        const daysRemaining = totalDays - daysPassed;
-        const weeksPassed = Math.floor(daysPassed / 7);
-        const progressPercent = Math.floor((daysPassed / totalDays) * 100);
+<!-- TABS -->
+<div class="tabs-bar">
+  <div class="tabs-inner">
+    <button class="tab-btn on" onclick="switchTab('plan',this)">WORKOUT PLAN</button>
+    <button class="tab-btn" onclick="switchTab('phases',this)">7-MONTH PHASES</button>
+    <button class="tab-btn" onclick="switchTab('nutrition',this)">NUTRITION</button>
+  </div>
+</div>
 
-        // Update stats
-        document.getElementById('daysRemaining').textContent = daysRemaining > 0 ? daysRemaining : 0;
-        document.getElementById('weeksPassed').textContent = weeksPassed;
-        document.getElementById('progressPercent').textContent = progressPercent + '%';
-        document.getElementById('currentDate').textContent = today.toLocaleDateString('en-US', { 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
-        });
+<!-- MAIN -->
+<div class="main">
 
-        // Update progress bar
-        document.getElementById('mainProgressBar').style.width = progressPercent + '%';
-        document.getElementById('mainProgressBar').textContent = progressPercent + '%';
+  <!-- PLAN TAB -->
+  <div id="tab-plan" class="tab-content on">
+    <div class="phase-timeline" id="phase-timeline"></div>
+    <div class="day-row" id="day-row"></div>
+    <div class="day-header" id="day-header"></div>
+    <div class="ex-table" id="ex-table"></div>
+    <div class="rest-bar" id="rest-bar"><span>⏱</span> <span id="rest-text"></span></div>
+    <div class="add-section">
+      <button class="add-toggle" id="add-toggle-btn" onclick="toggleAddPanel()">+ ADD EXTRA EXERCISE TO THIS DAY</button>
+      <div class="add-panel" id="add-panel">
+        <h4>ADD YOUR OWN EXERCISE</h4>
+        <div class="form-grid full">
+          <div class="fi"><label>EXERCISE NAME</label><input id="inp-name" type="text" placeholder="e.g. Diamond Push-Ups"/></div>
+        </div>
+        <div class="form-grid">
+          <div class="fi"><label>SETS</label><input id="inp-sets" type="text" placeholder="3"/></div>
+          <div class="fi"><label>REPS / TIME</label><input id="inp-reps" type="text" placeholder="12 or 30s"/></div>
+        </div>
+        <div class="form-grid full">
+          <div class="fi"><label>TIP (optional)</label><textarea id="inp-tip" placeholder="Form cue or why you're adding this..."></textarea></div>
+        </div>
+        <button class="add-submit" onclick="addExercise()">ADD TO TODAY'S WORKOUT</button>
+      </div>
+    </div>
+  </div>
 
-        // Determine current phase
-        let currentPhase = 'Foundation';
-        if (daysPassed >= 0 && daysPassed < 89) {
-            currentPhase = 'Foundation';
-        } else if (daysPassed >= 89 && daysPassed < 179) {
-            currentPhase = 'Strength';
-        } else if (daysPassed >= 179 && daysPassed < 269) {
-            currentPhase = 'Hypertrophy';
-        } else if (daysPassed >= 269) {
-            currentPhase = 'Advanced';
+  <!-- PHASES TAB -->
+  <div id="tab-phases" class="tab-content">
+    <div style="margin-bottom:24px;">
+      <div style="font-size:42px;letter-spacing:1px;margin-bottom:8px;">7-MONTH <span style="color:var(--accent)">ROADMAP</span></div>
+      <p style="font-size:14px;color:var(--muted);line-height:1.7;font-weight:300;">Each phase builds on the last. By December you'll have gone from beginner to shredded — with measurable improvements every month.</p>
+    </div>
+    <div id="phases-list"></div>
+    <div style="margin-top:24px;padding:20px;background:var(--surface);border:1px solid var(--border);">
+      <div style="font-size:22px;letter-spacing:1px;margin-bottom:10px;color:var(--accent);">WEEKLY PROGRESS TRACKER</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:12px;font-weight:300;">30 weeks total — track each week you complete</div>
+      <div class="phase-progress-strip" id="week-tracker"></div>
+      <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:300;" id="week-count-label"></div>
+    </div>
+  </div>
+
+  <!-- NUTRITION TAB -->
+  <div id="tab-nutrition" class="tab-content">
+    <div style="margin-bottom:24px;">
+      <div style="font-size:42px;letter-spacing:1px;margin-bottom:8px;">FUEL THE <span style="color:var(--accent)">SHRED</span></div>
+      <p style="font-size:14px;color:var(--muted);line-height:1.7;font-weight:300;">Training is 40%. Diet is 60%. Follow these rules and the results will come faster than you expect.</p>
+    </div>
+    <div class="nut-rule"><div class="nut-icon">🥩</div><div><div class="nut-rule-title">1g Protein Per Lb of Bodyweight</div><div class="nut-rule-detail">Eggs, chicken, paneer, lentils, curd, fish. Every single meal should have protein.</div></div></div>
+    <div class="nut-rule"><div class="nut-icon">💧</div><div><div class="nut-rule-title">3–4 Litres of Water Daily</div><div class="nut-rule-detail">Dehydration directly reduces muscle definition and performance. Non-negotiable.</div></div></div>
+    <div class="nut-rule"><div class="nut-icon">🍚</div><div><div class="nut-rule-title">Carbs Only Around Workouts</div><div class="nut-rule-detail">Oats pre-workout. Rice post-workout. Zero carbs at dinner to accelerate fat loss.</div></div></div>
+    <div class="nut-rule"><div class="nut-icon">🚫</div><div><div class="nut-rule-title">Cut All Liquid Calories</div><div class="nut-rule-detail">No soft drinks, juices, alcohol, or sweetened chai. These are invisible fat-storing calories.</div></div></div>
+    <div class="nut-rule"><div class="nut-icon">😴</div><div><div class="nut-rule-title">Sleep 7–9 Hours Every Night</div><div class="nut-rule-detail">Muscle is built during sleep, not during the workout. Growth hormone peaks at night.</div></div></div>
+    <div class="nut-rule"><div class="nut-icon">💊</div><div><div class="nut-rule-title">The Only Supplement Worth It</div><div class="nut-rule-detail">Creatine monohydrate 5g/day. No loading phase needed. Everything else is marketing.</div></div></div>
+    <div style="margin-top:24px;background:var(--surface);border:1px solid var(--border);padding:20px;">
+      <div style="font-size:18px;letter-spacing:1px;margin-bottom:14px;color:var(--accent);">SAMPLE DAY</div>
+      <div style="display:flex;gap:16px;padding:10px 0;border-bottom:1px solid #141414;"><div style="min-width:110px;font-size:11px;color:var(--muted);letter-spacing:1px;font-family:'Bebas Neue'">🌅 BREAKFAST</div><div style="font-size:13px;color:#aaa;font-weight:300;">4 eggs + 1 cup oats + black coffee</div></div>
+      <div style="display:flex;gap:16px;padding:10px 0;border-bottom:1px solid #141414;"><div style="min-width:110px;font-size:11px;color:var(--muted);letter-spacing:1px;font-family:'Bebas Neue'">🍱 LUNCH</div><div style="font-size:13px;color:#aaa;font-weight:300;">200g chicken / paneer + rice + veggies</div></div>
+      <div style="display:flex;gap:16px;padding:10px 0;border-bottom:1px solid #141414;"><div style="min-width:110px;font-size:11px;color:var(--muted);letter-spacing:1px;font-family:'Bebas Neue'">🥗 SNACK</div><div style="font-size:13px;color:#aaa;font-weight:300;">Curd / Greek yogurt + almonds</div></div>
+      <div style="display:flex;gap:16px;padding:10px 0;"><div style="min-width:110px;font-size:11px;color:var(--muted);letter-spacing:1px;font-family:'Bebas Neue'">🍽 DINNER</div><div style="font-size:13px;color:#aaa;font-weight:300;">200g fish or eggs + salad — NO carbs</div></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+// DATA
+// ─────────────────────────────────────────────
+const DIFF_INFO = {
+  easy:   { label: "EASY",   color: "#00e5a0", desc: "Fewer sets, longer rest, slower pace. Perfect if you're just starting out and need to build the habit first.", restSecs: 120, setMult: 0.7, repMult: 0.8 },
+  medium: { label: "MEDIUM", color: "#ffb800", desc: "Standard sets and reps. The default progression. Challenging but doable from week 1.", restSecs: 90, setMult: 1, repMult: 1 },
+  hard:   { label: "HARD",   color: "#ff4d00", desc: "Extra sets, shorter rest, heavier tempo. For those who want to push and recover faster.", restSecs: 60, setMult: 1.3, repMult: 1.2 },
+  beast:  { label: "BEAST",  color: "#cc00ff", desc: "Maximum volume. Supersets. No rest. This is for people who genuinely want to suffer for results.", restSecs: 30, setMult: 1.5, repMult: 1.5 }
+};
+
+const PHASES = [
+  { id:0, name:"FOUNDATION",  months:"Jun–Jul", weeks:"1–4",   color:"#e8ff00", goal:"Build consistency, perfect form, activate every muscle group." },
+  { id:1, name:"VOLUME",      months:"Jul–Aug", weeks:"5–8",   color:"#00e5a0", goal:"Add sets and reps. Muscles start adapting. Visible changes begin." },
+  { id:2, name:"INTENSITY",   months:"Aug–Sep", weeks:"9–13",  color:"#ffb800", goal:"Tempo reps, pause holds, supersets. Significant strength jump." },
+  { id:3, name:"POWER",       months:"Sep–Oct", weeks:"14–18", color:"#ff4d00", goal:"Explosive moves, plyometrics, circuits. Athleticism + mass." },
+  { id:4, name:"DEFINITION",  months:"Oct–Nov", weeks:"19–23", color:"#ff6eb4", goal:"High-rep finishers, drop sets, metabolic conditioning." },
+  { id:5, name:"SHRED",       months:"Nov–Dec", weeks:"24–28", color:"#cc00ff", goal:"Maximum fat burn while preserving muscle. Reveal the physique." },
+  { id:6, name:"PEAK",        months:"Dec",     weeks:"29–30", color:"#ffffff", goal:"Final 2 weeks. Hit PRs, peak conditioning. DEC 31 ready." }
+];
+
+const BASE_DAYS = [
+  {
+    day:"MON", label:"CHEST & SHOULDERS", focus:"Width",
+    exercises:[
+      { name:"Wide Push-Ups",         sets:"3", reps:"10",      tip:"Hands 2x shoulder width, builds outer chest" },
+      { name:"Pike Push-Ups",         sets:"3", reps:"8",       tip:"Hips high, mimics shoulder press motion" },
+      { name:"Arm Circles",           sets:"3", reps:"20 each", tip:"Activates all three delt heads for roundness" },
+      { name:"Decline Push-Ups",      sets:"2", reps:"8",       tip:"Feet on chair/bed, targets upper chest" },
+    ]
+  },
+  {
+    day:"TUE", label:"BACK & BICEPS", focus:"Thickness",
+    exercises:[
+      { name:"Superman Hold",         sets:"3", reps:"12 + 3s", tip:"Face down, lift chest and legs — squeezes lats" },
+      { name:"Doorframe Rows",        sets:"3", reps:"10",      tip:"Hold door frame, lean back, pull chest to frame" },
+      { name:"Reverse Snow Angels",   sets:"3", reps:"15",      tip:"Lying face down — major back width builder" },
+      { name:"Towel Bicep Curl",      sets:"3", reps:"12",      tip:"Step on towel, curl up — improvised but effective" },
+    ]
+  },
+  {
+    day:"WED", label:"ACTIVE RECOVERY", focus:"Recover",
+    exercises:[
+      { name:"20–30 Min Walk",        sets:"1", reps:"—",       tip:"Easy pace, keeps metabolism active, aids recovery" },
+      { name:"Full Body Stretch",     sets:"1", reps:"10 min",  tip:"Hold each stretch 30s, never bounce" },
+    ]
+  },
+  {
+    day:"THU", label:"LEGS & GLUTES", focus:"Power",
+    exercises:[
+      { name:"Bodyweight Squats",     sets:"4", reps:"15",      tip:"Full depth, drives natural testosterone" },
+      { name:"Reverse Lunges",        sets:"3", reps:"10 each", tip:"Safer on knees than forward lunges" },
+      { name:"Glute Bridges",         sets:"3", reps:"20",      tip:"Squeeze and hold 1 second at peak" },
+      { name:"Calf Raises",           sets:"4", reps:"25",      tip:"Full range, slow down phase" },
+    ]
+  },
+  {
+    day:"FRI", label:"CORE & ABS", focus:"Cut",
+    exercises:[
+      { name:"Plank",                 sets:"3", reps:"30s",     tip:"Squeeze glutes and abs simultaneously" },
+      { name:"Dead Bug",              sets:"3", reps:"10 each", tip:"Lower back must stay glued to floor" },
+      { name:"Bicycle Crunches",      sets:"3", reps:"16",      tip:"Slow — obliques not hip flexors" },
+      { name:"Leg Raises",            sets:"3", reps:"10",      tip:"Lower abs crucial for shredded look" },
+    ]
+  },
+  {
+    day:"SAT", label:"FULL BODY BURN", focus:"Burn",
+    exercises:[
+      { name:"Burpees",               sets:"3", reps:"8",       tip:"Full body, highest calorie burn per exercise" },
+      { name:"Mountain Climbers",     sets:"3", reps:"20",      tip:"Keep hips level — not a butt raise" },
+      { name:"Jump Squats",           sets:"3", reps:"10",      tip:"Land softly — builds explosive power" },
+      { name:"Push-Up to Down Dog",   sets:"3", reps:"10",      tip:"Flow between push-up and downward dog" },
+    ]
+  },
+  {
+    day:"SUN", label:"FULL REST", focus:"Grow",
+    exercises:[
+      { name:"Grow during rest",      sets:"—", reps:"—",       tip:"Muscle is built during recovery, not training. Sleep 8hrs." },
+    ]
+  },
+];
+
+// Extra exercises library that gets unlocked by phase
+const PHASE_EXTRAS = {
+  0: [], // foundation — just base
+  1: [
+    { name:"Wide Push-Up Holds",    sets:"3", reps:"8 + 2s hold", tip:"Pause at bottom, extra time under tension" },
+    { name:"Single Leg Glute Bridge",sets:"3",reps:"12 each",     tip:"Isolates each glute separately" },
+  ],
+  2: [
+    { name:"Archer Push-Ups",       sets:"3", reps:"8 each",     tip:"Shift weight side to side — advanced push variation" },
+    { name:"Jump Lunges",           sets:"3", reps:"8 each",     tip:"Plyometric lunge — power + cardio" },
+    { name:"Hollow Body Hold",      sets:"3", reps:"20s",        tip:"Lower back pressed into floor, arms and legs extended" },
+  ],
+  3: [
+    { name:"Explosive Push-Ups",    sets:"4", reps:"6",          tip:"Push so hard hands leave floor" },
+    { name:"Pistol Squat Negatives",sets:"3", reps:"5 each",     tip:"Lower slowly on one leg, use wall for balance" },
+    { name:"V-Sit Hold",            sets:"3", reps:"15s",        tip:"Legs and torso form a V — elite core" },
+  ],
+  4: [
+    { name:"Push-Up Burnout",       sets:"1", reps:"max",        tip:"Go to failure — tracks absolute strength gain" },
+    { name:"Nordic Curl Negative",  sets:"3", reps:"5",          tip:"Hook feet under couch, lower body slowly" },
+    { name:"Dragon Flag Negative",  sets:"3", reps:"4",          tip:"Shoulder on floor, lower straight body slowly" },
+  ],
+  5: [
+    { name:"Typewriter Push-Ups",   sets:"3", reps:"8",          tip:"Slide side to side at bottom — chest shredder" },
+    { name:"360 Lunge",             sets:"3", reps:"6 each",     tip:"Forward, lateral, reverse lunge in sequence" },
+    { name:"Ab Wheel Rollout",      sets:"3", reps:"8",          tip:"Use rolled towel or bottle if no wheel" },
+  ],
+  6: [
+    { name:"One-Arm Push-Up Neg",   sets:"3", reps:"4 each",     tip:"Lower on one arm, push up with two" },
+    { name:"Shrimp Squat",          sets:"3", reps:"6 each",     tip:"Single leg squat touching back knee to floor" },
+    { name:"L-Sit Hold",            sets:"3", reps:"5s",         tip:"On chairs — ultimate core and tricep move" },
+  ],
+};
+
+// ─────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────
+let currentDiff = 'easy';
+let currentPhase = 0;
+let currentDay = 0;
+let customExtras = {};
+
+function extraKey() { return `${currentPhase}-${currentDay}`; }
+function getExtras() { return customExtras[extraKey()] || []; }
+
+// ─────────────────────────────────────────────
+// COUNTDOWN
+// ─────────────────────────────────────────────
+function updateCountdown() {
+  const now = new Date();
+  const target = new Date('2026-12-31T23:59:59');
+  const diff = target - now;
+  if (diff <= 0) { document.getElementById('countdown').innerHTML = '<div class="cd-block"><div class="cd-num" style="color:var(--accent)">DONE</div></div>'; return; }
+  const days = Math.floor(diff / 86400000);
+  const hrs  = Math.floor((diff % 86400000) / 3600000);
+  const mins = Math.floor((diff % 3600000) / 60000);
+  const secs = Math.floor((diff % 60000) / 1000);
+  const months = Math.floor(days / 30);
+  const weeks  = Math.floor((days % 30) / 7);
+  const rdays  = days % 7;
+  document.getElementById('countdown').innerHTML = `
+    <div class="cd-block"><div class="cd-num">${months}</div><div class="cd-label">MONTHS</div></div>
+    <div class="cd-block"><div class="cd-num">${weeks}</div><div class="cd-label">WEEKS</div></div>
+    <div class="cd-block"><div class="cd-num">${rdays}</div><div class="cd-label">DAYS</div></div>
+    <div class="cd-block"><div class="cd-num">${String(hrs).padStart(2,'0')}</div><div class="cd-label">HOURS</div></div>
+    <div class="cd-block"><div class="cd-num">${String(mins).padStart(2,'0')}</div><div class="cd-label">MINS</div></div>
+    <div class="cd-block" style="border-color:rgba(232,255,0,0.3)"><div class="cd-num" style="color:rgba(232,255,0,0.5)">${String(secs).padStart(2,'0')}</div><div class="cd-label">SECS</div></div>
+  `;
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// ─────────────────────────────────────────────
+// DIFFICULTY
+// ─────────────────────────────────────────────
+function setDiff(d, btn) {
+  currentDiff = d;
+  document.querySelectorAll('.diff-btn').forEach(b => b.className = 'diff-btn');
+  btn.classList.add(`active-${d}`);
+  document.getElementById('diff-desc').textContent = DIFF_INFO[d].desc;
+  renderPlanTab();
+}
+
+// ─────────────────────────────────────────────
+// TABS
+// ─────────────────────────────────────────────
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
+  document.getElementById(`tab-${id}`).classList.add('on');
+  btn.classList.add('on');
+  if (id === 'phases') renderPhasesTab();
+}
+
+// ─────────────────────────────────────────────
+// PLAN TAB
+// ─────────────────────────────────────────────
+function renderPlanTab() {
+  renderPhaseTimeline();
+  renderDayRow();
+  renderDayDetail();
+}
+
+function renderPhaseTimeline() {
+  const el = document.getElementById("phase-timeline");
+  el.innerHTML = PHASES.map((p, i) => `
+    <div class="phase-chip ${i===currentPhase?"active":""}" onclick="selectPhase(${i})" style="${i===currentPhase?`border-color:${p.color};`:""}">
+      <div class="ph-num" style="${i===currentPhase?`color:${p.color}`:"color:#2a2a2a"}">${i+1}</div>
+      <div class="ph-name" style="${i===currentPhase?`color:${p.color}`:"color:#333"}">${p.name}</div>
+      <div class="ph-weeks">${p.months}</div>
+    </div>
+  `).join("");
+}
+
+function selectPhase(i) {
+  currentPhase = i;
+  currentDay = 0;
+  closeAddPanel();
+  renderPlanTab();
+}
+
+function renderDayRow() {
+  const el = document.getElementById('day-row');
+  const extrasCount = getExtras().length + (PHASE_EXTRAS[currentPhase]||[]).length;
+  el.innerHTML = BASE_DAYS.map((d, i) => {
+    const dayExtras = (customExtras[`${currentPhase}-${i}`]||[]).length;
+    return `<button class="day-btn ${i===currentDay?'on':''}" onclick="selectDay(${i})">
+      <div>${d.day}${dayExtras>0?`<span class="extras-badge">${dayExtras}</span>`:''}</div>
+      <div class="dfocus">${d.focus}</div>
+    </button>`;
+  }).join('');
+}
+
+function selectDay(i) {
+  currentDay = i;
+  closeAddPanel();
+  renderDayRow();
+  renderDayDetail();
+}
+
+function applyDiff(sets, reps) {
+  const d = DIFF_INFO[currentDiff];
+  if (sets === '—') return { sets, reps };
+  let s = parseFloat(sets) || 3;
+  s = Math.max(1, Math.round(s * d.setMult));
+  // reps: try to scale numbers in string
+  let r = reps.replace(/(\d+)/g, n => Math.max(1, Math.round(parseInt(n) * d.repMult)));
+  return { sets: String(s), reps: r };
+}
+
+function renderDayDetail() {
+  const day = BASE_DAYS[currentDay];
+  const isRest = day.focus === 'Grow' || day.focus === 'Recover';
+  const phaseExtras = PHASE_EXTRAS[currentPhase] || [];
+  const myExtras = getExtras();
+  const d = DIFF_INFO[currentDiff];
+
+  const p = PHASES[currentPhase];
+  document.getElementById('day-header').innerHTML = `
+    <div>
+      <h3>${day.label}</h3>
+      <div class="meta">${day.exercises.length} base · ${phaseExtras.length} unlocks · ${myExtras.length} yours &nbsp;·&nbsp; <span style="color:${DIFF_INFO[currentDiff].color}">${DIFF_INFO[currentDiff].label}</span> &nbsp;·&nbsp; <span style="color:${p.color}">${p.name}</span> · ${p.months}</div>
+    </div>
+    ${!isRest ? '<div style="font-size:28px;">🔥</div>' : ''}
+  `;
+
+  // Build exercise list
+  let rows = '';
+
+  // Base exercises
+  day.exercises.forEach(ex => {
+    const {sets, reps} = applyDiff(ex.sets, ex.reps);
+    rows += exRow(ex.name, sets, reps, ex.tip, false, false);
+  });
+
+  // Phase extras (unlocked)
+  if (phaseExtras.length && !isRest) {
+    rows += `<div style="padding:8px 20px;background:#0d0d0d;font-size:10px;color:${PHASES[currentPhase].color};letter-spacing:2px;font-family:'Bebas Neue';border-top:1px solid #141414;">
+      ✦ PHASE ${currentPhase+1} UNLOCKS — ${PHASES[currentPhase].name}
+    </div>`;
+    phaseExtras.forEach(ex => {
+      const {sets, reps} = applyDiff(ex.sets, ex.reps);
+      rows += exRow(ex.name, sets, reps, ex.tip, true, false);
+    });
+  }
+
+  // Custom extras
+  if (myExtras.length) {
+    rows += `<div style="padding:8px 20px;background:#0d0d0d;font-size:10px;color:var(--accent);letter-spacing:2px;font-family:'Bebas Neue';border-top:1px solid #141414;">
+      ✦ YOUR EXTRAS
+    </div>`;
+    myExtras.forEach((ex, idx) => {
+      rows += exRow(ex.name, ex.sets, ex.reps, ex.tip, true, true, idx);
+    });
+  }
+
+  document.getElementById('ex-table').innerHTML = rows;
+
+  // Rest bar
+  const restBar = document.getElementById('rest-bar');
+  const rt = document.getElementById('rest-text');
+  if (isRest) {
+    restBar.style.display = 'none';
+  } else {
+    restBar.style.display = 'flex';
+    rt.textContent = `Rest ${d.restSecs}s between sets in ${d.label} mode. ${currentDiff==='beast'?'Superset where possible. No mercy.':currentDiff==='hard'?'Keep rest strict — stopwatch recommended.':'Breathe, recover, then go again.'}`;
+  }
+}
+
+function exRow(name, sets, reps, tip, isExtra, isDeletable, idx) {
+  return `<div class="ex-row ${isExtra?'extra-row':''}">
+    <div>
+      <div class="ex-name">${name}</div>
+      <div class="ex-tip">💡 ${tip}</div>
+    </div>
+    ${sets !== '—' ? `
+    <div class="ex-sets"><div class="big">${sets}</div><div class="tiny">SETS</div></div>
+    <div class="ex-reps"><div class="big">${reps}</div><div class="tiny">REPS</div></div>
+    ` : '<div></div><div></div>'}
+    ${isDeletable ? `<button class="del-btn" onclick="deleteExtra(${idx})" title="Remove">✕</button>` : ''}
+  </div>`;
+}
+
+// ─────────────────────────────────────────────
+// ADD EXERCISE
+// ─────────────────────────────────────────────
+function toggleAddPanel() {
+  const p = document.getElementById('add-panel');
+  const btn = document.getElementById('add-toggle-btn');
+  p.classList.toggle('open');
+  btn.textContent = p.classList.contains('open') ? '✕ CANCEL' : '+ ADD EXTRA EXERCISE TO THIS DAY';
+}
+function closeAddPanel() {
+  document.getElementById('add-panel').classList.remove('open');
+  document.getElementById('add-toggle-btn').textContent = '+ ADD EXTRA EXERCISE TO THIS DAY';
+}
+function addExercise() {
+  const name = document.getElementById('inp-name').value.trim();
+  const sets = document.getElementById('inp-sets').value.trim() || '3';
+  const reps = document.getElementById('inp-reps').value.trim() || '10';
+  const tip  = document.getElementById('inp-tip').value.trim() || 'Added by you';
+  if (!name) { document.getElementById('inp-name').style.borderColor = 'var(--hard)'; return; }
+  document.getElementById('inp-name').style.borderColor = '#222';
+  const key = extraKey();
+  if (!customExtras[key]) customExtras[key] = [];
+  customExtras[key].push({ name, sets, reps, tip });
+  document.getElementById('inp-name').value = '';
+  document.getElementById('inp-sets').value = '';
+  document.getElementById('inp-reps').value = '';
+  document.getElementById('inp-tip').value  = '';
+  closeAddPanel();
+  renderDayRow();
+  renderDayDetail();
+}
+function deleteExtra(idx) {
+  const key = extraKey();
+  if (customExtras[key]) {
+    customExtras[key].splice(idx, 1);
+    renderDayRow();
+    renderDayDetail();
+  }
+}
+
+// ─────────────────────────────────────────────
+// PHASES TAB
+// ─────────────────────────────────────────────
+function renderPhasesTab() {
+  const list = document.getElementById('phases-list');
+
+  list.innerHTML = PHASES.map((p, i) => {
+    const isActive = i === currentPhase;
+    return `
+    <div class="phase-card">
+      <div class="phase-card-header" onclick="togglePhaseCard(${i})">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div style="font-size:32px;color:${p.color};font-family:'Bebas Neue';">${i+1}</div>
+          <div>
+            <div style="font-size:20px;letter-spacing:1px;">${p.name}</div>
+            <div style="font-size:11px;color:var(--muted);font-weight:300;">${p.months} · Weeks ${p.weeks}</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          ${isActive ? `<span class="phase-badge current">ACTIVE</span>` : ''}
+          <span style="color:var(--muted);font-size:16px;">▾</span>
+        </div>
+      </div>
+      <div class="phase-card-body ${isActive?'open':''}" id="phcard-${i}">
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:14px;">${p.goal}</p>
+        ${(PHASE_EXTRAS[i]||[]).length ? `
+        <div style="font-size:11px;letter-spacing:2px;color:${p.color};margin-bottom:8px;font-family:'Bebas Neue'">UNLOCKED EXERCISES</div>
+        ${(PHASE_EXTRAS[i]||[]).map(ex => `
+          <div style="padding:10px 0;border-bottom:1px solid #141414;display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <div style="font-size:13px;font-weight:500;">${ex.name}</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">${ex.tip}</div>
+            </div>
+            <div style="text-align:right;min-width:80px;">
+              <div style="font-size:13px;color:${p.color};font-family:'Bebas Neue'">${ex.sets} × ${ex.reps}</div>
+            </div>
+          </div>`).join('')}` :
+          '<div style="font-size:12px;color:#333;font-weight:300;">Base exercises only — foundation phase keeps it simple.</div>'
         }
-        document.getElementById('currentPhase').textContent = currentPhase;
+      </div>
+    </div>`;
+  }).join('');
 
-        // Phase switching function
-        function showPhase(phaseNumber) {
-            // Hide all phases
-            document.querySelectorAll('.phase-content').forEach(phase => {
-                phase.classList.add('hidden');
-            });
-            
-            // Remove active class from all buttons
-            document.querySelectorAll('.phase-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show selected phase
-            document.getElementById('phase' + phaseNumber).classList.remove('hidden');
-            
-            // Add active class to clicked button
-            event.target.classList.add('active');
-        }
+  const tracker = document.getElementById('week-tracker');
+  tracker.innerHTML = Array.from({length:30}, (_,i) =>
+    `<div class="week-pip ${i===0?'current':''}" title="Week ${i+1}"></div>`
+  ).join('');
+  document.getElementById('week-count-label').textContent = 'Track your weeks manually — tap a phase to activate it.';
+}
 
-        // Auto-show current phase on load
-        window.addEventListener('load', () => {
-            let autoPhase = 1;
-            if (daysPassed >= 89 && daysPassed < 179) autoPhase = 2;
-            else if (daysPassed >= 179 && daysPassed < 269) autoPhase = 3;
-            else if (daysPassed >= 269) autoPhase = 4;
-            
-            document.querySelectorAll('.phase-btn')[autoPhase - 1].click();
-        });
-    </script>
+function togglePhaseCard(i) {
+  const body = document.getElementById(`phcard-${i}`);
+  body.classList.toggle('open');
+}
+
+// ─────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────
+renderPlanTab();
+</script>
 </body>
 </html>
